@@ -9,6 +9,9 @@ type OptimizedPrompt = {
   midjourney: string;
   stableDiffusion: string;
   dalle: string;
+  jimeng: string;
+  wenxin: string;
+  tongyi: string;
   tips: string[];
   parameters: {
     style: string;
@@ -93,7 +96,9 @@ export default function PromptOptimizerPage() {
         items={[
           { title: '未来城市', text: '一个充满科技感的未来城市' },
           { title: '魔法森林', text: '神秘的魔法森林，有发光植物' },
-          { title: '太空旅行', text: '在太空中旅行的场景' }
+          { title: '太空旅行', text: '在太空中旅行的场景' },
+          { title: '江南水乡', text: '烟雨朦胧的江南水乡小镇' },
+          { title: '古风美人', text: '穿着汉服的古典美人' }
         ]}
         onUse={(t) => setIdea(t)}
       />
@@ -104,7 +109,11 @@ export default function PromptOptimizerPage() {
           '选择风格和情绪偏好',
           '点击"优化"，获得专业的AI绘画提示词'
         ]}
-        tips={['支持Midjourney、Stable Diffusion、DALL-E等多种AI绘画工具']}
+        tips={[
+          '支持Midjourney、Stable Diffusion、DALL-E等国际AI绘画工具',
+          '支持即梦、文心一格、通义万相等国内AI绘画平台',
+          '自动生成中英文提示词，适配不同平台特点'
+        ]}
       />
       
       <div className="stack">
@@ -125,6 +134,8 @@ export default function PromptOptimizerPage() {
               <option value="anime">动漫风格</option>
               <option value="oil-painting">油画风格</option>
               <option value="watercolor">水彩风格</option>
+              <option value="chinese">国画风格</option>
+              <option value="ink">水墨风格</option>
             </select>
             
             <select className="lg" value={mood} onChange={(e) => setMood(e.target.value)}>
@@ -134,6 +145,8 @@ export default function PromptOptimizerPage() {
               <option value="warm">温暖</option>
               <option value="cool">冷色调</option>
               <option value="mysterious">神秘</option>
+              <option value="elegant">优雅</option>
+              <option value="vibrant">活力</option>
             </select>
             
             <button 
@@ -214,6 +227,42 @@ export default function PromptOptimizerPage() {
                   style={{ background: 'white', fontFamily: 'monospace' }}
                 />
                 <CopyButton getText={() => result.dalle} />
+              </div>
+              
+              <div className="card" style={{ background: '#fdf2f8', borderColor: '#ec4899' }}>
+                <h4 style={{ color: '#831843', marginTop: 0 }}>🌸 即梦</h4>
+                <textarea 
+                  className="lg" 
+                  rows={8} 
+                  value={result.jimeng} 
+                  readOnly
+                  style={{ background: 'white', fontFamily: 'monospace' }}
+                />
+                <CopyButton getText={() => result.jimeng} />
+              </div>
+              
+              <div className="card" style={{ background: '#f0f9ff', borderColor: '#06b6d4' }}>
+                <h4 style={{ color: '#0e7490', marginTop: 0 }}>🎨 文心一格</h4>
+                <textarea 
+                  className="lg" 
+                  rows={8} 
+                  value={result.wenxin} 
+                  readOnly
+                  style={{ background: 'white', fontFamily: 'monospace' }}
+                />
+                <CopyButton getText={() => result.wenxin} />
+              </div>
+              
+              <div className="card" style={{ background: '#f0fdf4', borderColor: '#84cc16' }}>
+                <h4 style={{ color: '#3f6212', marginTop: 0 }}>🚀 通义万相</h4>
+                <textarea 
+                  className="lg" 
+                  rows={8} 
+                  value={result.tongyi} 
+                  readOnly
+                  style={{ background: 'white', fontFamily: 'monospace' }}
+                />
+                <CopyButton getText={() => result.tongyi} />
               </div>
             </div>
 

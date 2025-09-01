@@ -15,7 +15,9 @@ export async function POST(request: NextRequest) {
       cartoon: '卡通风格',
       anime: '动漫风格',
       'oil-painting': '油画风格',
-      watercolor: '水彩风格'
+      watercolor: '水彩风格',
+      chinese: '国画风格',
+      ink: '水墨风格'
     };
 
     const moodMap = {
@@ -24,7 +26,9 @@ export async function POST(request: NextRequest) {
       dark: '暗黑',
       warm: '温暖',
       cool: '冷色调',
-      mysterious: '神秘'
+      mysterious: '神秘',
+      elegant: '优雅',
+      vibrant: '活力'
     };
 
     const prompt = `请为以下图像描述优化生成专业的AI绘画提示词，支持多个平台。
@@ -39,6 +43,9 @@ export async function POST(request: NextRequest) {
   "midjourney": "Midjourney专用的详细提示词，包含风格、质量、光照等参数",
   "stableDiffusion": "Stable Diffusion专用的提示词，包含负面提示词",
   "dalle": "DALL-E专用的提示词，简洁明了",
+  "jimeng": "即梦专用的中文提示词，突出国风特色，包含风格标签",
+  "wenxin": "文心一格专用的中文提示词，强调艺术性和细节",
+  "tongyi": "通义万相专用的中文提示词，注重创意和表现力",
   "tips": [
     "使用技巧1",
     "使用技巧2", 
@@ -54,10 +61,13 @@ export async function POST(request: NextRequest) {
 
 要求：
 1. 每个平台的提示词都要专业、详细、可执行
-2. 参数建议要具体且实用
-3. 使用技巧要有建设性
-4. 只返回JSON，不要其他文字
-5. 提示词要符合各平台的特点和最佳实践`;
+2. 即梦、文心一格、通义万相必须使用中文提示词
+3. 国际平台使用英文提示词
+4. 参数建议要具体且实用
+5. 使用技巧要有建设性
+6. 只返回JSON，不要其他文字
+7. 提示词要符合各平台的特点和最佳实践
+8. 国内平台要体现中国文化特色和审美偏好`;
 
     const response = await callOpenAI(prompt);
     
