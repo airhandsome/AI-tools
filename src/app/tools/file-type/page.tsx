@@ -22,7 +22,6 @@ const fileSignatures: { [key: string]: FileTypeInfo } = {
   '4D4D002A': { extension: 'tiff', mimeType: 'image/tiff', description: 'TIFF图片', category: '图片' },
   
   // 文档格式
-  '504B0304': { extension: 'docx', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', description: 'Word文档', category: '文档' },
   '504B0506': { extension: 'docx', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', description: 'Word文档', category: '文档' },
   '504B0708': { extension: 'docx', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', description: 'Word文档', category: '文档' },
   'D0CF11E0': { extension: 'doc', mimeType: 'application/msword', description: 'Word文档(旧版)', category: '文档' },
@@ -36,15 +35,12 @@ const fileSignatures: { [key: string]: FileTypeInfo } = {
   
   // 音频格式
   '494433': { extension: 'mp3', mimeType: 'audio/mpeg', description: 'MP3音频', category: '音频' },
-  '52494646': { extension: 'wav', mimeType: 'audio/wav', description: 'WAV音频', category: '音频' },
   '4F676753': { extension: 'ogg', mimeType: 'audio/ogg', description: 'OGG音频', category: '音频' },
-  '66747970': { extension: 'm4a', mimeType: 'audio/mp4', description: 'M4A音频', category: '音频' },
   
   // 视频格式
   '000001B3': { extension: 'mpg', mimeType: 'video/mpeg', description: 'MPEG视频', category: '视频' },
   '000001BA': { extension: 'mpg', mimeType: 'video/mpeg', description: 'MPEG视频', category: '视频' },
   '66747970': { extension: 'mp4', mimeType: 'video/mp4', description: 'MP4视频', category: '视频' },
-  '52494646': { extension: 'avi', mimeType: 'video/x-msvideo', description: 'AVI视频', category: '视频' },
   '1A45DFA3': { extension: 'mkv', mimeType: 'video/x-matroska', description: 'MKV视频', category: '视频' },
   
   // 可执行文件
