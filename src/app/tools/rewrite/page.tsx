@@ -4,6 +4,7 @@ import { postJson, type ApiResult } from '@/lib/api';
 import CopyButton from '@/app/_components/CopyButton';
 import Examples, { type Example } from '@/app/_components/Examples';
 import Usage from '@/app/_components/Usage';
+import { ToolDonation } from '@/app/_components/Monetize';
 
 export default function RewritePage() {
   const [text, setText] = useState('');
@@ -47,11 +48,11 @@ export default function RewritePage() {
         title="如何使用"
         steps={[
           '在上方文本框粘贴需要改写的内容',
-          '选择目标风格与长度，可选“少量幽默”',
-          '点击“生成”，在下方查看并复制结果'
+          '选择目标风格与长度，可选"少量幽默"',
+          '点击"生成"，在下方查看并复制结果'
         ]}
         tips={[
-          '尽量提供明确场景，如“给客户的道歉邮件”',
+          '尽量提供明确场景，如"给客户的道歉邮件"',
           '结果不满意可再次生成或调整风格，再试一次'
         ]}
       />
@@ -101,6 +102,9 @@ export default function RewritePage() {
           </div>
         </div>
       </div>
+
+      {/* 捐赠组件 */}
+      <ToolDonation />
     </section>
   );
 }
