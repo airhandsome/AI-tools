@@ -14,7 +14,7 @@ npm run dev
 OPENAI_API_KEY=sk-xxx
 OPENAI_MODEL=gpt-4o-mini
 NEXT_PUBLIC_GA_ID=G-XXXXXXXX
-# 变现（可选）
+# 变现（可选） 如果没有添加的话，就默认不显示广告和buy me a coffee
 NEXT_PUBLIC_BMC_ID=your_bmc_id
 NEXT_PUBLIC_ENABLE_ADS=false
 # DeepSeek（可选，设置后优先使用）
