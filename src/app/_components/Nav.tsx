@@ -6,6 +6,7 @@ export default function Nav() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const dropdownRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const timeoutRefs = useRef<{ [key: string]: NodeJS.Timeout | null }>({});
+  const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
   // 延迟关闭下拉菜单
   const handleMouseLeave = (dropdownKey: string) => {
@@ -41,6 +42,29 @@ export default function Nav() {
       });
     };
   }, []);
+
+  // 初始化主题：优先本地存储，其次系统偏好
+  useEffect(() => {
+    try {
+      const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+        setTheme(saved);
+        return;
+      }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const next = prefersDark ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      setTheme(next);
+    } catch {}
+  }, []);
+
+  const toggleTheme = () => {
+    const next = (theme === 'dark') ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch {}
+    setTheme(next);
+  };
 
   const tools: { [key: string]: Array<{ name: string; href: string }> } = {
     'AI工具': [
@@ -102,6 +126,17 @@ export default function Nav() {
           <Link href="/" className="nav-home">
             首页
           </Link>
+
+          <button
+            type="button"
+            className="icon-btn"
+            aria-label={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
+            title={theme === 'dark' ? '切换到浅色模式' : '切换到深色模式'}
+            onClick={toggleTheme}
+            style={{ marginLeft: 4 }}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
 
           {Object.entries(tools).map(([category, items]) => (
             <div
